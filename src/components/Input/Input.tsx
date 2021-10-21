@@ -11,6 +11,7 @@ export const Input: React.FC<InputProps> = ({
   showError,
   name,
   type,
+  onBlur,
 }) => {
   return (
     <Wrap>
@@ -24,6 +25,7 @@ export const Input: React.FC<InputProps> = ({
           onChange={onChange}
           placeholder={placeholder}
           name={name}
+          onBlur={onBlur}
         />
       </div>
       <div>

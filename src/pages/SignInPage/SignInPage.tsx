@@ -28,24 +28,30 @@ export const SignInPage: React.FC = () => {
 
   return (
     <Wrap>
+      <Title>Вход в систему</Title>
       <Form noValidate onSubmit={formik.handleSubmit} autoComplete={'off'}>
-        <ElementWrap mt={0}>
+        <ElementWrap mt={20}>
           <Input
             label={'Логин'}
             placeholder={'Введите Ваше имя'}
             type={'text'}
             {...formik.getFieldProps('login')}
-            showError={Boolean(formik.errors.login)}
+            showError={
+              Boolean(formik.touched.login) && Boolean(formik.errors.login)
+            }
             error={formik.errors.login}
           />
         </ElementWrap>
         <ElementWrap mt={10}>
           <Input
             label={'Пароль'}
-            placeholder={'Введите Ваше имя'}
+            placeholder={'Введите Ваш пароль'}
             type={'password'}
             {...formik.getFieldProps('password')}
-            showError={Boolean(formik.errors.password)}
+            showError={
+              Boolean(formik.touched.password) &&
+              Boolean(formik.errors.password)
+            }
             error={formik.errors.password}
           />
         </ElementWrap>
@@ -73,4 +79,9 @@ const Form = styled.form`
 
 const ElementWrap = styled.div<{ mt: number }>`
   margin-top: ${({ mt }) => mt}px;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+  color: #756f86;
 `;

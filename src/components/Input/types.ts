@@ -1,4 +1,4 @@
-import { ChangeEvent, InputHTMLAttributes } from 'react';
+import React, { ChangeEvent, InputHTMLAttributes } from 'react';
 
 export interface InputProps {
   name: string;
@@ -9,4 +9,5 @@ export interface InputProps {
   placeholder: string;
   error: string | undefined;
   showError: boolean;
+  onBlur: React.FocusEventHandler<HTMLInputElement>;
 }
