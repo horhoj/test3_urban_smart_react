@@ -3,6 +3,8 @@ import { FormikConfig, useFormik } from 'formik';
 import styled from 'styled-components';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
+import { useAppDispatch } from '../../store/hooks';
+import { authActions } from '../../store/auth';
 import { CredentialData, CredentialDataSchema } from './types';
 
 const initialValues: CredentialData = {
@@ -11,11 +13,12 @@ const initialValues: CredentialData = {
 };
 
 export const SignInPage: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   const formikConfig: FormikConfig<CredentialData> = {
     initialValues,
     onSubmit: (values) => {
-      const msg = JSON.stringify(values, null, 2);
-      alert(msg);
+      dispatch(authActions.setIsAuthenticated(values.login));
     },
     validationSchema: CredentialDataSchema,
     validateOnMount: true,
